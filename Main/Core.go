@@ -75,7 +75,7 @@ func main() {
 
 	fnNtMapVisualRelativePoints, err := procNtMapVisualRelativePoints.Find()
 	if err != nil {
-		fmt.Println("Failed to find NtMapVisualRelativePoints:", err)
+		fmt.Println("[X] Error, ", err)
 		return
 	}
 
@@ -93,7 +93,7 @@ func main() {
 	fmt.Printf("[+] before: %X\n", testVariableTwo)
 	result, _, _ := syscall.Syscall(fnNtMapVisualRelativePoints, 1, uintptr(unsafe.Pointer(&data)), 0, 0)
 	if result != 0 {
-		fmt.Println("Error executing mapped function:", result)
+		fmt.Println("[!] Mapped func broke:", result)
 	} else {
 		fmt.Printf("[+] after: %X\n", testVariableTwo)
 	}
